@@ -2,7 +2,7 @@
     display: grid;
     grid-template-rows: auto 1fr; /* первая строка для Header, вторая строка для контента */
     height: 100vh;
-    overflow: hidden; /* для переполнения содержимого */
+   /* для переполнения содержимого */
 }
 
 .sidebar-content-wrapper {

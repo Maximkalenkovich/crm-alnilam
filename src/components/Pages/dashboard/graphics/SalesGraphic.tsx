@@ -3,38 +3,37 @@ import {
     Chart as ChartJS,
     CategoryScale,
     LinearScale,
-    BarElement,
+    PointElement,
+    LineElement,
     Title,
     Tooltip,
+    Filler,
     Legend,
 } from 'chart.js';
-import { Bar } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import {faker} from "@faker-js/faker";
 
 
 ChartJS.register(
     CategoryScale,
     LinearScale,
-    BarElement,
+    PointElement,
+    LineElement,
     Title,
     Tooltip,
+    Filler,
     Legend
 );
 
 export const options = {
+    responsive: true,
     plugins: {
+        legend: {
+            position: 'top' as const,
+        },
         title: {
             display: true,
-            text: 'Chart.js Bar Chart - Stacked',
-        },
-    },
-    responsive: true,
-    scales: {
-        x: {
-            stacked: true,
-        },
-        y: {
-            stacked: true,
+            text: 'Chart.js Line Chart',
         },
     },
 };
@@ -45,27 +44,15 @@ export const data = {
     labels,
     datasets: [
         {
-            label: 'Dataset 1',
-            data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-            backgroundColor: 'rgb(255, 99, 132)',
-        },
-        {
+            fill: true,
             label: 'Dataset 2',
-            data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-            backgroundColor: 'rgb(75, 192, 192)',
-        },
-        {
-            label: 'Dataset 3',
-            data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-            backgroundColor: 'rgb(53, 162, 235)',
+            data: labels.map(() => faker.number.int({ min: 0, max: 1000 })),
+            borderColor: 'rgb(53, 162, 235)',
+            backgroundColor: 'rgba(53, 162, 235, 0.5)',
         },
     ],
 };
 
-
-
 export function SalesGraphic() {
-    return <Bar options={options} data={data} />;
+    return <Line options={options} data={data} />;
 }
-
-
