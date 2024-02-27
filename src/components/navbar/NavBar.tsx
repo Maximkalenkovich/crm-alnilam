@@ -1,20 +1,30 @@
-
 import React, { useState } from 'react';
 import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import {useStyles} from "./navBarStyles/navBarStyles";
+import {NavLink} from "react-router-dom";
+import {Dashboard} from "@material-ui/icons";
+import s from './navBarStyles/navBarStylesforlink.module.css';
+import ProductIcon from '@material-ui/icons/LocalMall';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import MessengerIcon from '@material-ui/icons/Message';
+import ListIcon from '@material-ui/icons/List';
+
 
 
 
 function Sidebar() {
     const classes = useStyles();
     const [isOpen, setIsOpen] = useState(false);
+    const routes = [
+        {to:'/dashboard',label:'Dashboard',component:<Dashboard/>},
+        {to:'/product',label:'Product',component:<ProductIcon />},
+        {to:'/favourites',label:'Favourites',component:<FavoriteIcon />},
+        {to:'/messenger',label:'Messenger',component:<MessengerIcon />},
+        {to:'/orderList',label:'Order List',component:<ListIcon/>}
+    ]
 
     const handleToggleSidebar = () => {
         setIsOpen(!isOpen);
@@ -35,22 +45,12 @@ function Sidebar() {
                         {isOpen ? <ChevronLeftIcon /> : <MenuIcon />}
                     </IconButton>
                 </div>
-                <List>
-                    <ListItem button>
-                        <ListItemIcon>{/* Иконка для пункта меню */}</ListItemIcon>
-                        <ListItemText primary="Menu Item 1" />
-                    </ListItem>
-                    <ListItem button>
-                        <ListItemIcon>{/* Иконка для пункта меню */}</ListItemIcon>
-                        <ListItemText primary="Menu Item 2" />
-                    </ListItem>
-                    {/* Добавьте дополнительные пункты меню соответствующим образом */}
-                </List>
-            </Drawer>
 
-            <main className={`${classes.content} ${isOpen ? classes.contentShift : ''}`}>
-                {/* Ваш контент */}
-            </main>
+                <ul className = {isOpen?s.open :s.closed}>
+                    {routes.map((route,index)=>
+                        <li className={s.li} key={index}> <NavLink className={({isActive})=>isActive? s.active :s.link} to={route.to}>{isOpen? route.label:route.component}</NavLink></li>)}
+                </ul>
+            </Drawer>
         </div>
     );
 }

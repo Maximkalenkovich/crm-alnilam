@@ -9,22 +9,22 @@ function Header() {
     // стили материал юа
     const classes = useStyles();
     return (
-        <AppBar position="fixed" className={classes.appBar}>
-            <Toolbar>
-                <div className={classes.grow} />
-                <InputSearch/>
-                <IconButton color="inherit">
-                    {/*иконка для уведомлений*/}
-                    <Badge badgeContent={3} color="secondary">
-                        <NotificationsIcon color="primary"/>
-                    </Badge>
-                </IconButton>
-                <IconButton >
-                    {/*иконка для аккаунта*/}
-                    <AccountCircleIcon />
-                </IconButton>
-            </Toolbar>
-        </AppBar>
+            <AppBar  className={classes.appBar}>
+                <Toolbar>
+                    <div className={classes.grow} />
+                    <InputSearch/>
+                    <IconButton color="inherit">
+                        {/*иконка для уведомлений*/}
+                        <Badge badgeContent={3} color="secondary">
+                            <NotificationsIcon color="primary"/>
+                        </Badge>
+                    </IconButton>
+                    <IconButton >
+                        {/*иконка для аккаунта*/}
+                        <AccountCircleIcon />
+                    </IconButton>
+                </Toolbar>
+            </AppBar>
     );
 }
 

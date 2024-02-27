@@ -1,6 +1,7 @@
 import {makeStyles} from "@material-ui/core/styles";
+import {hover} from "@testing-library/user-event/dist/hover";
 
-const drawerWidth = 240;
+const drawerWidth = 150;
 
 export const useStyles = makeStyles((theme) => ({
     root: {
