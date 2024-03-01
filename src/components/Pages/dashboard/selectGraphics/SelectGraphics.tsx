@@ -1,46 +1,55 @@
-import {useState} from "react";
+import React, {memo, useState} from "react";
 import {NavLink} from "react-router-dom";
-import {SalesGraphic} from "../graphics/SalesGraphic";
+import { SalesGraphic } from "../graphics/SalesGraphic";
+import { Accordion, AccordionSummary, AccordionDetails, Typography } from "@material-ui/core";
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import {FinishedGraphicProduct} from "../graphics/FinishedGraphicProduct";
 
 type nameGraphicsAndRoutingType = {
     title: string;
     route: string;
-    component?: React.ReactNode; // тип React.ReactNode означает, что здесь может быть любой валидный JSX элемент или компонент
+    component?: React.ReactNode;
 }
 
-
-export const SelectGraphics = () => {
-
-    const [state, setState] = useState(false)
+export const SelectGraphics = memo(() => {
+    const [expanded, setExpanded] = useState(false);
 
     const nameGraphicsAndRouting: nameGraphicsAndRoutingType[] = [
         {
-            title: 'Количество сделанной продукции', route: '/complitedProduct', component: <SalesGraphic/>
+            title: 'Количество сделанной продукции',
+            route: '/complitedProduct',
+            component:<FinishedGraphicProduct/>
         },
         {
-            title: 'Годовая прибыль', route: '/annualProfit', component: <SalesGraphic/>
+            title: 'Годовая прибыль',
+            route: '/annualProfit',
+            component: <SalesGraphic/>
         },
+
     ]
-    const onClickChange = () => {
-        setState(!state)
-    }
+
+    const handleChange =  () => {
+        setExpanded(!expanded);
+    };
 
     return (
         <>
             <div>
-                <h3 onClick={onClickChange}>список граффиков</h3>
-                {state &&
-                    nameGraphicsAndRouting.map(p => (
-                        <ul>
-                            <li><NavLink key={p.route} to={p.route}>{p.title}</NavLink></li>
-                        </ul>
-                    ))
-                }
+                <h3>Граффики компании</h3>
+                {nameGraphicsAndRouting.map((p, index) => (
+                    <Accordion  onChange={handleChange} key={p.route}>
+                        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                            <Typography>{p.title}</Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                            <NavLink to={p.route}>{p.title}</NavLink>
+                        </AccordionDetails>
+                    </Accordion>
+                ))}
+
+
+
             </div>
         </>
     );
-}
-
-
-
-
+})
