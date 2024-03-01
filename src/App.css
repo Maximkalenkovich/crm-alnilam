@@ -2,6 +2,7 @@
     display: grid;
     grid-template-rows: auto 1fr; /* первая строка для Header, вторая строка для контента */
     height: 100vh;
+
    /* для переполнения содержимого */
 }
 
@@ -13,4 +14,13 @@
     grid-row: 2; /* поместить контент во вторую строку */
     padding-top: 64px; /* высота Header + любая дополнительная отступ */
     overflow-y: auto; /* добавьте прокрутку, если контент слишком большой для вмещения */
+}
+
+.container {
+    height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content:  flex-start;
+        align-items: stretch;
+        flex-wrap: wrap;
 }
