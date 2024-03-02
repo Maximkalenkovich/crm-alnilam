@@ -1,35 +1,26 @@
 
-import React from 'react';
+import React, {useState} from 'react';
 import s from './productStyle.module.css';
 import {Button} from "../../../elements/Button";
-import {useDispatch, useSelector} from "react-redux";
+import { useSelector} from "react-redux";
 import {AppRootStateType} from "../../../redux/redux";
-import {BrandType, ProductStateType} from "../../../redux/productReducer";
-import {changeFilterBrandAC} from "../../../redux/actions";
+import {InitialStateType, ProductStateType} from "../../../redux/productReducer";
+
 
 
 export const Products = () => {
 
-    let productList = useSelector<AppRootStateType, ProductStateType[] >(state=>state.productList)
-     const dispatch = useDispatch()
+    const productList = useSelector<AppRootStateType, InitialStateType>(state => state.productList);
+    const [filteredProducts, setFilteredProducts] = useState<ProductStateType[]>(productList.product);
 
-    const tasheFilterClickHandler = ()=>{
-     dispatch(changeFilterBrandAC('Tashe'))
-    }
-    const limboFilterClickHandler = ()=>{
-        dispatch(changeFilterBrandAC('Limbo'))
-    }
-    const jinFilterClickHandler = ()=>{
-        dispatch(changeFilterBrandAC('Jin'))
-    }
-    const leratoFilterClickHandler = ()=>{
-        dispatch(changeFilterBrandAC('Lerato'))
-    }
-    const flarioFilterClickHandler = ()=>{
-        dispatch(changeFilterBrandAC('Flario'))
-    }
-    const allFilterClickHandler = ()=>{
-        dispatch(changeFilterBrandAC('All'))
+    const onChangeFilter = (brand: string) => {
+            const filtered = productList.product.filter(product => product.brand === brand);
+            setFilteredProducts(filtered);
+    };
+
+    const allChange = () =>{
+      setFilteredProducts(productList.product)
+
     }
 
 
@@ -37,19 +28,19 @@ export const Products = () => {
         <div className={s.productList}>
 
 <div>
-    <Button title={'Tashe'} onClick={tasheFilterClickHandler}/>
-    <Button title={'Limbo'} onClick={limboFilterClickHandler }/>
-    <Button title={'Jin'} onClick={jinFilterClickHandler}/>
-    <Button title={'Lerato'} onClick={leratoFilterClickHandler}/>
-    <Button title={'Flario'} onClick={flarioFilterClickHandler}/>
-    <Button title={'All'} onClick={allFilterClickHandler }/>
+    <Button title={'Tashe'} onClick={()=>onChangeFilter('Tashe')}/>
+    <Button title={'Limbo'} onClick={()=>onChangeFilter('Limbo')}/>
+    <Button title={'Jin'} onClick={()=>onChangeFilter('Jin')}/>
+    <Button title={'Lerato'} onClick={()=>onChangeFilter('Lerato')}/>
+    <Button title={'Flario'} onClick={()=>onChangeFilter('Flario')}/>
+    <Button title={'All'} onClick={allChange}/>
 
 </div>
 
 
             <div className="container">
                 <div className={s.productList}>
-                    {productList.map((product) => (
+                    {filteredProducts.map((product) => (
                         <div className={s.productCard} key={product.id}>
                             <img src={product.image} alt="Product" />
                             <h3 className={s.productTitle}>{product.name}</h3>
