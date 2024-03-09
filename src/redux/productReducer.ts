@@ -8,9 +8,10 @@ export type BrandType = 'Tashe' | 'Limbo' | 'Lerato' | 'Jin' | 'Flario' | 'All';
 export interface ProductStateType {
     id: number;
     name: string;
-    description: string;
     image: string;
     brand: BrandType;
+    price:number
+    isDone:boolean
 }
 
 export interface InitialStateType {
@@ -23,37 +24,43 @@ const initialState: InitialStateType = {
         {
             id: 1,
             name: 'Product 1',
-            description: 'Product 1 Description',
+           price: 20,
             image: photoexemple,
             brand: 'Tashe',
+            isDone:true
+
         },
         {
             id: 2,
             name: 'Product 2',
-            description: 'Product 2 Description',
+            price: 20,
             image: photoexemple,
             brand: 'Limbo',
+            isDone:false
         },
         {
             id: 3,
             name: 'Product 3',
-            description: 'Product 3 Description',
+            price: 20,
             image: photoexemple,
             brand: 'Jin',
+            isDone:true
         },
         {
             id: 4,
             name: 'Product 3',
-            description: 'Product 3 Description',
+            price: 20,
             image: photoexemple,
             brand: 'Lerato',
+            isDone:true
         },
         {
             id: 5,
             name: 'Product 3',
-            description: 'Product 3 Description',
+            price: 20,
             image: photoexemple,
             brand: 'Flario',
+            isDone:true
         },
     ]
 }
@@ -63,7 +70,6 @@ const initialState: InitialStateType = {
 export const productReducer = (state:InitialStateType=initialState, action:ActionType)=>{
 switch (action.type){
     case "CHANGE-BRAND":
-
         return state
     default:
         return state
