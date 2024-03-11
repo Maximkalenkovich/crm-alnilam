@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {ProductStateType} from "../../../../redux/productReducer";
 import s from '../ProductCard/productCardStyle/productCardStyle.module.css'
+import {RatingControlled} from "../../../../elements/utilits/RatingControlled";
 
 
 export type ProductTypeCard = {
@@ -10,29 +11,16 @@ export type ProductTypeCard = {
 
 const ProductCard: React.FC<ProductTypeCard> = ({ product }) => {
 
-
-
-    const changeStatusProduct =()=>{
-    }
-
-
-
     return (
  <div className={s.productCard}>
+   <RatingControlled/>
 <img src={product.image}></img>
-
-     <input type ='checkbox'  className = {s.checkBox} checked={product.isDone} onChange={changeStatusProduct}/>
-
 <h3 className={s.title}>{product.name}</h3>
-
  <span>{product.brand}</span>
-
      <span>{product.price}BYN</span>
-
      <button className={s.button} >view</button>
 
  </div>
     );
 };
-
 export default ProductCard;

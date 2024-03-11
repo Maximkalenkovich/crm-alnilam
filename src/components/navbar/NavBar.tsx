@@ -21,7 +21,6 @@ function Sidebar() {
     const routes = [
         {to:'/dashboard',label:'Dashboard',component:<Dashboard/>},
         {to:'/product',label:'Product',component:<ProductIcon />},
-        {to:'/favourites',label:'Favourites',component:<FavoriteIcon />},
         {to:'/messenger',label:'Messenger',component:<MessengerIcon />},
         {to:'/orderList',label:'Order List',component:<ListIcon/>}
     ]
