@@ -1,42 +1,47 @@
 .productCard {
     display: flex;
-    flex-direction: column;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    background-color: white;
+    align-items: center;
+    /* Дополнительные стили */
+    padding: 10px; /* Добавляем отступы вокруг карточки */
+    background-color: #f5f5f5; /* Добавляем фоновый цвет карточки */
+    border-radius: 5px; /* Добавляем скругленные углы карточки */
 }
 
-.productCard img {
-    width: 100%;
-    max-height: 200px;
+.image {
+    width: 100px;
+    height: 100px;
     object-fit: cover;
-    border-radius: 4px;
-    margin-bottom: 10px;
+    margin-right: 10px;
+    /* Дополнительные стили */
 }
 
 .title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 5px;
+    margin: 0;
+    font-size: 16px;
+    /* Дополнительные стили */
 }
 
-.checkBox{
-    margin-right: 2px;
+.brand {
+    margin-right: 10px;
+    /* Дополнительные стили */
 }
 
+.price {
+    margin-right: 10px;
+    /* Дополнительные стили */
+}
 
 .button {
-    padding: 5px 10px;
-    background-color: #ccc;
+    background-color: #007bff;
+    color: #fff;
     border: none;
-    border-radius: 4px;
+    padding: 5px 10px;
     cursor: pointer;
-    width:50px
+    /* Дополнительные стили */
 }
 
-.button:hover {
-    background-color: #aaa;
-    color: #fff;
+/* Дополнительные стили для таблицы */
+.tableHead {
+    background-color: #f5f5f5;
+    font-weight: bold;
 }

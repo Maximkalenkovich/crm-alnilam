@@ -3,6 +3,7 @@ import { AppBar, Toolbar, IconButton, Badge } from '@material-ui/core';
 import { Notifications as NotificationsIcon, AccountCircle as AccountCircleIcon } from '@material-ui/icons';
 import {useStyles} from "./stylesHeader/headerStyle";
 import InputSearch from "./inputSearch/InputSearch";
+import {Link} from "react-router-dom";
 
 
 function Header() {
@@ -21,7 +22,8 @@ function Header() {
                     </IconButton>
                     <IconButton >
                         {/*иконка для аккаунта*/}
-                        <AccountCircleIcon />
+
+                        <Link to={'/registrationForm'}><AccountCircleIcon /></Link>
                     </IconButton>
                 </Toolbar>
             </AppBar>

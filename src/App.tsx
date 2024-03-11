@@ -8,6 +8,7 @@ import {Products} from "./components/Pages/product/Products";
 import {Dashboard} from "./components/Pages/dashboard/Dashboard";
 import {SalesGraphic} from "./components/Pages/dashboard/graphics/SalesGraphic";
 import {FinishedGraphicProduct} from "./components/Pages/dashboard/graphics/FinishedGraphicProduct";
+import {RegistrationPage} from "./components/Pages/registrationPage/RegistrationPage";
 
 
 
@@ -25,6 +26,8 @@ const App =memo(()=>{
                         <Route path="/product"  element={<Products/>} />
                         <Route path="/complitedProduct"  element={<FinishedGraphicProduct />} />
                         <Route path="/annualProfit"  element={<SalesGraphic/>} />
+                        <Route path="/registrationForm"  element={<RegistrationPage/>} />
+
                     </Routes>
 
                 </div>

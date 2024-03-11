@@ -1,15 +1,4 @@
 
-
-.productList {
-border: 1px solid red;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    margin-left: 40px;
-}
 .filterButtons {
     display: flex;
     align-items: center;
@@ -24,11 +13,23 @@ border: 1px solid red;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-.productCard {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+
+
+.productTable {
+    max-width: 700px;
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse; /* Определяет, что границы таблицы сливаются в одну линию */
 }
 
+.tableRow {
+    background-color: #fff; /* Добавляем белый фон к каждой строке таблицы */
+}
 
-
+.tableCell {
+    border: 1px solid #ccc; /* Добавляем границы к каждой ячейке таблицы */
+    padding: 10px; /* Добавляем отступы внутри ячеек */
+}
+img{
+    width:100px
+}
