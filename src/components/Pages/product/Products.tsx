@@ -1,52 +1,23 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import s from './productStyle.module.css';
 import {Button} from "../../../elements/Button";
-import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateType} from "../../../redux/redux";
-import {InitialStateType, ProductStateType} from "../../../redux/productReducer";
 import {Table, TableBody, TableCell, TableHead, TableRow} from '@mui/material';
 import {RatingControlled} from "../../../elements/utilits/RatingControlled";
-import {v1} from "uuid";
-import {addProductAC} from "../../../redux/actions";
-
-
+import {useProducts} from "./useProduct";
 
 
 export const Products = () => {
 
-    const productList= useSelector<AppRootStateType, ProductStateType[]>(state => state.productList.product);
-
-    const [isAddProductFormVisible, setIsAddProductFormVisible] = useState(false);
-    const [filteredProducts, setFilteredProducts] = useState<ProductStateType[]>(productList);
-
-    const dispatch = useDispatch()
-    const [newProduct, setNewProduct] = useState<ProductStateType>({
-        id: v1(),
-        name: '',
-        brand: '',
-        price: 0,
-        image: '',
-    });
-
-
-
-    const addProduct = () => {
-        dispatch(addProductAC(newProduct));
-        setIsAddProductFormVisible(false);
-    };
-
-    const filterProductsByBrand = (filter: string) => {
-        if (filter === 'All') {
-            setFilteredProducts(productList);
-        } else {
-            const filtered = productList.filter((product) => product.brand === filter);
-            setFilteredProducts(filtered);
-        }
-    }
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setNewProduct((prevProduct) => ({ ...prevProduct, [name]: value }));
-    };
+    const {
+        isAddProductFormVisible,
+        setIsAddProductFormVisible,
+        filteredProducts,
+        filterProductsByBrand,
+        newProduct,
+        addProduct,
+        setNewProduct,
+        handleImageChange
+    } = useProducts();
 
 
     return (
@@ -54,27 +25,41 @@ export const Products = () => {
             <div className={'container'}>
                 <div className={s.filterButtons}>
                     <Button title={'All'} onClick={() => filterProductsByBrand('All')}/>
-                    <Button title={'Tashe'} onClick={() => filterProductsByBrand('Tashe')} />
-                    <Button title={'Limbo'} onClick={() => filterProductsByBrand('Limbo')} />
-                    <Button title={'Jin'} onClick={() => filterProductsByBrand('Jin')} />
-                    <Button title={'Lerato'} onClick={() => filterProductsByBrand('Lerato')} />
-                    <Button title={'Flario'} onClick={() => filterProductsByBrand('Flario')} />
+                    <Button title={'Tashe'} onClick={() => filterProductsByBrand('Tashe')}/>
+                    <Button title={'Limbo'} onClick={() => filterProductsByBrand('Limbo')}/>
+                    <Button title={'Jin'} onClick={() => filterProductsByBrand('Jin')}/>
+                    <Button title={'Lerato'} onClick={() => filterProductsByBrand('Lerato')}/>
+                    <Button title={'Flario'} onClick={() => filterProductsByBrand('Flario')}/>
                 </div>
                 <button onClick={() => setIsAddProductFormVisible(true)}>Добавить товар</button>
                 {isAddProductFormVisible && (
                     <div className={s.addProductForm}>
-                        {Object.entries(newProduct).map(([key, value]) => (
-                            <div key={key}>
-                                <label htmlFor={key}>{key}</label>
-                                <input
-                                    type={key === "price" ? "number" : "text"}
-                                    name={key}
-                                    id={key}
-                                    value={value}
-                                    onChange={handleInputChange}
-                                />
-                            </div>
-                        ))}
+                        <input
+                            type="text"
+                            placeholder="Name"
+                            value={newProduct.name}
+                            onChange={(e) => setNewProduct({...newProduct, name: e.target.value})}
+                        />
+                        <input
+                            type="text"
+                            placeholder="Brand"
+                            value={newProduct.brand}
+                            onChange={(e) => setNewProduct({...newProduct, brand: e.target.value})}
+                        />
+                        <input
+                            type="number"
+                            placeholder="Price"
+                            value={newProduct.price}
+                            onChange={(e) => setNewProduct({...newProduct, price: Number(e.target.value)})}
+                        />
+                        <input type="file" onChange={handleImageChange}/>
+                        {newProduct.image && typeof newProduct.image === 'string' && (
+                            <img src={newProduct.image} alt="Product" className={s.image}/>
+                        )}
+                        {newProduct.image && typeof newProduct.image === 'object' && (
+                            <img src={URL.createObjectURL(newProduct.image as File)} alt="Product" className={s.image}/>
+                        )}
+
                         <button onClick={addProduct}>Save</button>
                     </div>
                 )}
@@ -95,7 +80,10 @@ export const Products = () => {
                             {filteredProducts.map((product) => (
                                 <TableRow key={product.id} className={s.tableRow}>
                                     <TableCell className={s.tableCell}>
-                                        <img src={product.image} alt="Product" className={s.image} />
+
+                                        <img src={URL.createObjectURL(product.image)} alt="Product"
+                                             className={s.image}/>
+
                                     </TableCell>
                                     <TableCell className={s.tableCell}>{product.name}</TableCell>
                                     <TableCell className={s.tableCell}>{product.brand}</TableCell>
@@ -104,7 +92,7 @@ export const Products = () => {
                                         <button className={s.button}>View</button>
                                     </TableCell>
                                     <TableCell className={s.tableCell}>
-                                        <RatingControlled />
+                                        <RatingControlled/>
                                     </TableCell>
                                 </TableRow>
                             ))}

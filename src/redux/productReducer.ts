@@ -1,15 +1,10 @@
-import photoexemple from "../images/photoexemple.webp";
+
 import {ActionType} from "./actions";
-import {v1} from "uuid";
-
-
-
-export type BrandType = 'Tashe' | 'Limbo' | 'Lerato' | 'Jin' | 'Flario' | 'All';
 
 export interface ProductStateType {
     id: string;
     name: string;
-    image: string;
+    image: string | File| any;
     brand: string;
     price:number
 
