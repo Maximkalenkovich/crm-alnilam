@@ -1,16 +1,15 @@
 {
   "files": {
-    "main.css": "/crm-alnilam/static/css/main.a7e3067a.css",
-    "main.js": "/crm-alnilam/static/js/main.35fbfe8d.js",
+    "main.css": "/crm-alnilam/static/css/main.303f9647.css",
+    "main.js": "/crm-alnilam/static/js/main.e7ed207a.js",
     "static/js/453.e084fc39.chunk.js": "/crm-alnilam/static/js/453.e084fc39.chunk.js",
-    "static/media/photoexemple.webp": "/crm-alnilam/static/media/photoexemple.11d52476371e3336f4a7.webp",
     "index.html": "/crm-alnilam/index.html",
-    "main.a7e3067a.css.map": "/crm-alnilam/static/css/main.a7e3067a.css.map",
-    "main.35fbfe8d.js.map": "/crm-alnilam/static/js/main.35fbfe8d.js.map",
+    "main.303f9647.css.map": "/crm-alnilam/static/css/main.303f9647.css.map",
+    "main.e7ed207a.js.map": "/crm-alnilam/static/js/main.e7ed207a.js.map",
     "453.e084fc39.chunk.js.map": "/crm-alnilam/static/js/453.e084fc39.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a7e3067a.css",
-    "static/js/main.35fbfe8d.js"
+    "static/css/main.303f9647.css",
+    "static/js/main.e7ed207a.js"
   ]
 }
