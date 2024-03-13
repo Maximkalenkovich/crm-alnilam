@@ -1,6 +1,11 @@
 
 import {ActionType} from "./actions";
 
+
+
+
+export type BrandType = 'Tashe' | 'Limbo' | 'Lerato' | 'Jin' | 'Flario' | 'All';
+
 export interface ProductStateType {
     id: string;
     name: string;

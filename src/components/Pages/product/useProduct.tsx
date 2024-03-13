@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import React, { useState} from "react";
+import React, {useState} from "react";
 import {AppRootStateType} from "../../../redux/redux";
 import {ProductStateType} from "../../../redux/productReducer";
 import {v1} from "uuid";
@@ -36,7 +36,7 @@ export const useProducts = () => {
 
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setNewProduct({ ...newProduct, image: e.target.files?.[0] });
+        setNewProduct({...newProduct, image: e.target.files?.[0]});
     };
 
     return {
