@@ -1,12 +1,10 @@
-import {BrandType} from "./productReducer";
+import {BrandType, ProductStateType} from "./productReducer";
 
 
-export type ActionType = ReturnType<typeof changeStatusActionCreate>
+export type ActionType = ReturnType<typeof addProductAC>
 
-export const  changeStatusActionCreate= (productId:string,isDone:boolean)=> {
-    return{
-        type:"CHANGE-STATUS",
-        productId,
-        isDone
-    }as const
-}
+export const addProductAC = (product: ProductStateType) => ({
+    type: 'ADD_PRODUCT', product
+}as const
+);
+
