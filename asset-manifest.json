@@ -1,15 +1,16 @@
 {
   "files": {
     "main.css": "/crm-alnilam/static/css/main.303f9647.css",
-    "main.js": "/crm-alnilam/static/js/main.e7ed207a.js",
+    "main.js": "/crm-alnilam/static/js/main.46a8a62c.js",
     "static/js/453.e084fc39.chunk.js": "/crm-alnilam/static/js/453.e084fc39.chunk.js",
+    "static/media/photoexemple.webp": "/crm-alnilam/static/media/photoexemple.11d52476371e3336f4a7.webp",
     "index.html": "/crm-alnilam/index.html",
     "main.303f9647.css.map": "/crm-alnilam/static/css/main.303f9647.css.map",
-    "main.e7ed207a.js.map": "/crm-alnilam/static/js/main.e7ed207a.js.map",
+    "main.46a8a62c.js.map": "/crm-alnilam/static/js/main.46a8a62c.js.map",
     "453.e084fc39.chunk.js.map": "/crm-alnilam/static/js/453.e084fc39.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.303f9647.css",
-    "static/js/main.e7ed207a.js"
+    "static/js/main.46a8a62c.js"
   ]
 }
