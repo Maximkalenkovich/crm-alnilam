@@ -21,10 +21,15 @@ export const useProducts = () => {
     });
 
     const addProduct = () => {
+        if (!newProduct.image) {
+            alert('Please select an image.');
+            return;
+        }
         dispatch(addProductAC(newProduct));
         setIsAddProductFormVisible(false);
+        console.log(productList)
     };
-
+    console.log(productList)
     const filterProductsByBrand = (filter: string) => {
         if (filter === 'All') {
             setFilteredProducts(productList);

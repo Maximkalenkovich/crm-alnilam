@@ -57,8 +57,9 @@ export const Products = () => {
                             <img src={newProduct.image} alt="Product" className={s.image}/>
                         )}
                         {newProduct.image && typeof newProduct.image === 'object' && (
-                            <img src={URL.createObjectURL(newProduct.image as File)} alt="Product" className={s.image}/>
+                            <img src={URL.createObjectURL(newProduct.image as File)} alt="Product" className={s.image} />
                         )}
+
 
                         <button onClick={addProduct}>Save</button>
                     </div>
@@ -81,8 +82,15 @@ export const Products = () => {
                                 <TableRow key={product.id} className={s.tableRow}>
                                     <TableCell className={s.tableCell}>
 
-                                        <img src={URL.createObjectURL(product.image)} alt="Product"
-                                             className={s.image}/>
+                                        <img
+                                            src={
+                                                typeof product.image === 'string'
+                                                    ? product.image
+                                                    : URL.createObjectURL(product.image as File)
+                                            }
+                                            alt="Product"
+                                            className={s.image}
+                                        />
 
                                     </TableCell>
                                     <TableCell className={s.tableCell}>{product.name}</TableCell>

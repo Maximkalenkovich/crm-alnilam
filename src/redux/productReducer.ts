@@ -1,7 +1,8 @@
 
 import {ActionType} from "./actions";
 
-
+import photoexemple from '../images/photoexemple.webp'
+import {v1} from "uuid";
 
 
 export type BrandType = 'Tashe' | 'Limbo' | 'Lerato' | 'Jin' | 'Flario' | 'All';
@@ -19,8 +20,52 @@ export type InitialStateType = {
 };
 
 const initialState: InitialStateType = {
- product:[],
+ product:[
+     {
+    id: v1(),
+        name: 'Product 1',
+    price: 20,
+    image: photoexemple,
+    brand: 'Tashe',
+
+
+},
+{
+    id: '2',
+        name: 'Product 2',
+    price: 20,
+    image: photoexemple,
+    brand: 'Limbo',
+
+},
+{
+    id: '3',
+        name: 'Product 3',
+    price: 20,
+    image: photoexemple,
+    brand: 'Jin',
+
+},
+{
+    id: '4',
+        name: 'Product 3',
+    price: 20,
+    image: photoexemple,
+    brand: 'Lerato',
+
+},
+{
+    id: '5',
+        name: 'Product 3',
+    price: 20,
+    image: photoexemple,
+    brand: 'Flario',
+
+},
+ ],
 }
+
+
 
 export const productReducer = (state:InitialStateType=initialState, action:ActionType)=>{
 switch (action.type){
