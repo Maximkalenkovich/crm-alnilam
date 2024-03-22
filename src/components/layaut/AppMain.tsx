@@ -1,41 +1,30 @@
+
+
+
+
 import Header from "../header/Header";
 import Sidebar from "../navbar/NavBar";
-import {Outlet} from "react-router-dom";
+import {Outlet, Route, Routes} from "react-router-dom";
 import {RegistrationPage} from "../Pages/registrationPage/RegistrationPage";
 import React, {useState} from "react";
-import {Button} from "@mui/material";
+
+import {Dashboard} from "../Pages/dashboard/Dashboard";
+import {Products} from "../Pages/product/Products";
+import {FinishedGraphicProduct} from "../Pages/dashboard/graphics/FinishedGraphicProduct";
+import {SalesGraphic} from "../Pages/dashboard/graphics/SalesGraphic";
 
 
 export const AppMain = () => {
 
-    const [registr, setRegistr] = useState(true);
-    const handlerVewPage = () => {
-        setRegistr(!registr);
-    }
     return (
-        <>
-            {
-                registr ?<>
-                        <RegistrationPage/>
-                    <>
-                        <Button onClick={handlerVewPage}>Посмотреть без регистрации</Button>
-                    </>
-
-                    </>
-                   :
-                    <div className="app-wrapper">
-                        <Header/>
-                        <div className="sidebar-content-wrapper">
-                            <Sidebar />
-                            <div className='app-wrapper-content content-wrapper'>
-
-                                <Outlet />
-
-                            </div>
-                        </div>
-                    </div>
-            }
-        </>
+                                <Routes>
+                                    <Route path="/" element={<Dashboard />}/>
+                                        <Route path="/dashboard" element={<Dashboard />} />
+                                        <Route path="/product" element={<Products />} />
+                                        <Route path="/complitedProduct" element={<FinishedGraphicProduct />} />
+                                        <Route path="/annualProfit" element={<SalesGraphic />} />
+                                        <Route path="/registrationForm" element={<RegistrationPage />} />
+                                </Routes>
 
     )
 }

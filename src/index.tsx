@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {Provider} from "react-redux";
 import {store} from "./redux/redux";
+import {HashRouter} from "react-router-dom";
 
 
 const root = ReactDOM.createRoot(
@@ -13,9 +14,13 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
       <Provider store={store}>
-<div className={'container'}>
-    <App />
-</div>
+          <HashRouter>
+
+              <div className={'container'}>
+                  <App />
+              </div>
+          </HashRouter>
+
       </Provider>
   </React.StrictMode>
 );
